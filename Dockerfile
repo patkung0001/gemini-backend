@@ -1,11 +1,11 @@
-FROM php:8.2-apache
+htdocs/index.php
 
-# ติดตั้ง libcurl ก่อน
-RUN apt-get update \
-    && apt-get install -y libcurl4-openssl-dev \
-    && docker-php-ext-install curl \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+<?php
+$ch = curl_init("https://example.com");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$data = curl_exec($ch);
+curl_close($ch);
+echo $data;
 
 # คัดลอกไฟล์ทั้งหมดเข้า Apache
 COPY . /var/www/html/
