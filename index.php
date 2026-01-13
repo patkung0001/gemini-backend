@@ -1,3 +1,3 @@
 <?php
-echo "Backend OK";
-
+echo "Backend OK<br>";
+echo "PHP version: " . phpversion();
